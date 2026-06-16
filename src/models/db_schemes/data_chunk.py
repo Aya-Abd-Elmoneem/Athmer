@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field, validator
-from typing import Optional
+from typing import Optional, Union
 from bson.objectid import ObjectId
 
 class DataChunk(BaseModel):
@@ -28,3 +28,4 @@ class DataChunk(BaseModel):
 class RetrievedDocument(BaseModel):
     text: str
     score: float
+    id: Union[str, int]

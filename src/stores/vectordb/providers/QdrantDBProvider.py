@@ -139,6 +139,7 @@ class QdrantDBProvider(VectorDBInterface):
         
         return [
             RetrievedDocument(**{
+                "id": result.id,
                 "score": result.score,
                 "text": result.payload["text"],
             })
