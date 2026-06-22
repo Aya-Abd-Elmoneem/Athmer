@@ -16,7 +16,7 @@ motor==3.7.1
 pydantic-mongo==3.1.0
 openai==2.41.1
 cohere==7.0.4
-grok==6.2
+groq==1.5.0
 qdrant-client==1.10.1
 sentence-transformers==5.0.0
 torch>=2.2.0
