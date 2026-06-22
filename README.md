@@ -1,8 +1,7 @@
 <div align="center">
 
-<img src="src\assets\logo\logo.png" alt="Athmer Logo" width="120" />
+<img src="src\assets\logo\logo.png" alt="Athmer Logo" width="200" />
 
-# Athmer
 
 ### An AI-Powered Agricultural Intelligence Platform for the Egyptian Agricultural Bank
 
