@@ -16,10 +16,17 @@ class Settings(BaseSettings):
     GENERATION_BACKEND: str
     EMBEDDING_BACKEND: str
 
+<<<<<<< HEAD
     OPENAI_API_KEY: Optional[str] = None   # ← غيري str لـ Optional[str]
     OPENAI_API_URL: Optional[str] = None   # ← نفس الكلام
     COHERE_API_KEY: Optional[str] = None
     GROQ_API_KEY: Optional[str] = None
+=======
+    OPENAI_API_KEY: Optional[str] = None
+    OPENAI_API_URL: str = None
+    COHERE_API_KEY: str = None
+    GROQ_API_KEY: str = None
+>>>>>>> f49075a4d744152a7164649785765538a5fcb808
 
     GENERATION_MODEL_ID: Optional[str] = None
     EMBEDDING_MODEL_ID: Optional[str] = None
