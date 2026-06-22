@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="Frontend/public/athmer.png" alt="Athmer Logo" width="120" />
+<img src="src\assets\logo\logo.png" alt="Athmer Logo" width="120" />
 
 # Athmer
 
