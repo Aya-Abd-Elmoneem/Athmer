@@ -3,7 +3,7 @@ from ..LLMEnums import DocumentTypeEnum
 from google import genai
 from google.genai import types
 import logging
-
+import time
 
 class GeminiProvider(LLMInterface):
 
@@ -65,7 +65,10 @@ class GeminiProvider(LLMInterface):
         if not self.embedding_model_id:
             self.logger.error("Embedding model for Gemini was not set")
             return None
+        
+        time.sleep(0.7)
 
+        
         response = self.client.models.embed_content(
             model=self.embedding_model_id,
             contents=self.process_text(text),
