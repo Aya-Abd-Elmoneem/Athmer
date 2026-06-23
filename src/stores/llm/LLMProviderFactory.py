@@ -3,7 +3,7 @@ from .providers import (
     OpenAIProvider,
     CoHereProvider,
     GroqProvider,
-    SentenceTransformerProvider,
+    # SentenceTransformerProvider,
     GeminiProvider
 )
 
@@ -35,11 +35,11 @@ class LLMProviderFactory:
                 default_generation_max_output_tokens=self.config.GENERATION_DAFAULT_MAX_TOKENS,
                 default_generation_temperature=self.config.GENERATION_DAFAULT_TEMPERATURE
             )
-        if provider == LLMEnums.SENTENCE_TRANSFORMER.value:
+        # if provider == LLMEnums.SENTENCE_TRANSFORMER.value:
 
-            return SentenceTransformerProvider(
-                model_name="BAAI/bge-m3"
-            )
+        #     return SentenceTransformerProvider(
+        #         model_name="BAAI/bge-m3"
+        #     )
         if provider == LLMEnums.GEMINI.value:
             return GeminiProvider(
                 api_key=self.config.GEMINI_API_KEY,

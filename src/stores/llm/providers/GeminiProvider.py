@@ -1,7 +1,9 @@
 from ..LLMInterface import LLMInterface
 from ..LLMEnums import DocumentTypeEnum
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 import logging
+
 
 class GeminiProvider(LLMInterface):
 
@@ -19,8 +21,7 @@ class GeminiProvider(LLMInterface):
         self.embedding_model_id = None
         self.embedding_size = 768
 
-        genai.configure(api_key=self.api_key)
-        self.client = genai
+        self.client = genai.Client(api_key=self.api_key)
 
         self.logger = logging.getLogger(__name__)
 
@@ -34,8 +35,8 @@ class GeminiProvider(LLMInterface):
     def process_text(self, text: str):
         return text[:self.default_input_max_characters].strip()
 
-    def generate_text(self, prompt: str, chat_history: list = [], max_output_tokens: int = None,
-                      temperature: float = None):
+    def generate_text(self, prompt: str, chat_history: list = [],
+                      max_output_tokens: int = None, temperature: float = None):
 
         if not self.generation_model_id:
             self.logger.error("Generation model for Gemini was not set")
@@ -44,10 +45,10 @@ class GeminiProvider(LLMInterface):
         max_output_tokens = max_output_tokens or self.default_generation_max_output_tokens
         temperature = temperature or self.default_generation_temperature
 
-        model = self.client.GenerativeModel(self.generation_model_id)
-        response = model.generate_content(
-            self.process_text(prompt),
-            generation_config=genai.types.GenerationConfig(
+        response = self.client.models.generate_content(
+            model=self.generation_model_id,
+            contents=self.process_text(prompt),
+            config=types.GenerateContentConfig(
                 max_output_tokens=max_output_tokens,
                 temperature=temperature,
             )
@@ -65,21 +66,16 @@ class GeminiProvider(LLMInterface):
             self.logger.error("Embedding model for Gemini was not set")
             return None
 
-        task_type = "retrieval_document"
-        if document_type == DocumentTypeEnum.QUERY:
-            task_type = "retrieval_query"
-
-        response = self.client.embed_content(
+        response = self.client.models.embed_content(
             model=self.embedding_model_id,
-            content=self.process_text(text),
-            task_type=task_type,
+            contents=self.process_text(text),
         )
 
-        if not response or "embedding" not in response:
+        if not response or not response.embeddings:
             self.logger.error("Error while embedding text with Gemini")
             return None
 
-        return response["embedding"]
+        return response.embeddings[0].values
 
     def construct_prompt(self, prompt: str, role: str):
         return {

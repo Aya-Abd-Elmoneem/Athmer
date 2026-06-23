@@ -18,6 +18,6 @@ openai==2.41.1
 cohere==7.0.4
 groq==1.5.0
 qdrant-client==1.10.1
-sentence-transformers==5.0.0
-torch>=2.2.0
-google-generativeai==0.8.6
+# sentence-transformers==5.0.0
+# torch>=2.2.0
+google-genai==2.9.0
