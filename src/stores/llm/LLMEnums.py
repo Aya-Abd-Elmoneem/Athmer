@@ -5,6 +5,7 @@ class LLMEnums(Enum):
     COHERE = "COHERE"
     GROQ = "GROQ"
     SENTENCE_TRANSFORMER = "SENTENCE_TRANSFORMER"
+    GEMINI = "GEMINI"
 
 class OpenAIEnums(Enum):
     SYSTEM = "system"
