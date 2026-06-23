@@ -1,8 +1,8 @@
 from enum import Enum
 
 class LLMEnums(Enum):
-    OPENAI = "OPENAI"
-    COHERE = "COHERE"
+    # OPENAI = "OPENAI"
+    # COHERE = "COHERE"
     GROQ = "GROQ"
     # SENTENCE_TRANSFORMER = "SENTENCE_TRANSFORMER"
     GEMINI = "GEMINI"

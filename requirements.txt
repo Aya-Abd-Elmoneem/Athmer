@@ -14,8 +14,8 @@ pandas==3.0.3
 openpyxl==3.1.5
 motor==3.7.1
 pydantic-mongo==3.1.0
-openai==2.41.1
-cohere==7.0.4
+# openai==2.41.1
+# cohere==7.0.4
 groq==1.5.0
 qdrant-client==1.10.1
 # sentence-transformers==5.0.0

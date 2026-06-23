@@ -16,9 +16,9 @@ class Settings(BaseSettings):
     GENERATION_BACKEND: str
     EMBEDDING_BACKEND: str
 
-    OPENAI_API_KEY: Optional[str] = None   # ← غيري str لـ Optional[str]
-    OPENAI_API_URL: Optional[str] = None   # ← نفس الكلام
-    COHERE_API_KEY: Optional[str] = None
+    # OPENAI_API_KEY: Optional[str] = None   # ← غيري str لـ Optional[str]
+    # OPENAI_API_URL: Optional[str] = None   # ← نفس الكلام
+    # COHERE_API_KEY: Optional[str] = None
     GEMINI_API_KEY: Optional[str] = None
     GROQ_API_KEY: Optional[str] = None
 
