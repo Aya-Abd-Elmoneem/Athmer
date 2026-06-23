@@ -19,7 +19,7 @@ class GeminiProvider(LLMInterface):
 
         self.generation_model_id = None
         self.embedding_model_id = None
-        self.embedding_size = 768
+        self.embedding_size = None
 
         self.client = genai.Client(api_key=self.api_key)
 
@@ -30,7 +30,7 @@ class GeminiProvider(LLMInterface):
 
     def set_embedding_model(self, model_id: str, embedding_size: int):
         self.embedding_model_id = model_id
-        self.embedding_size = embedding_size or 768
+        self.embedding_size = embedding_size 
 
     def process_text(self, text: str):
         return text[:self.default_input_max_characters].strip()
@@ -68,7 +68,7 @@ class GeminiProvider(LLMInterface):
         
         time.sleep(0.7)
 
-        
+
         response = self.client.models.embed_content(
             model=self.embedding_model_id,
             contents=self.process_text(text),
